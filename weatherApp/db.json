@@ -1,0 +1,4 @@
+{
+  "cities": [{"id":1,"name":"ny","favorite":false,"created_at":"2024-06-17T15:41:07.000000Z","updated_at":null},{"id":12,"name":"new york","favorite":false,"created_at":"2024-06-17T16:03:02.000000Z","updated_at":null},{"id":13,"name":"pecs","favorite":false,"created_at":"2024-06-17T16:08:49.000000Z","updated_at":null},{"id":14,"name":"london","favorite":true,"created_at":"2024-06-17T16:12:33.000000Z","updated_at":null}]
+}
+
