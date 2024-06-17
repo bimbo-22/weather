@@ -21,15 +21,6 @@ export class WeatherService {
         environment.XRapidAPIKeyHeaderName,
         environment.XRapidAPIKeyHeaderValue
       );
-
-    // const params = {
-    //   q: cityName,
-    //   units: 'metric',
-    //   mode: 'json',
-    // };
-
-    console.log({ url, headers });
-
     return this.http.get<WeatherData>(url, { headers });
   }
 }
