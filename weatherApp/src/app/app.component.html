@@ -60,10 +60,10 @@
   </div>
 </div>
 <div class="favorites-container">
-  <div class="favorite-city" *ngFor="let city of favoriteCities">
+  <div class="favorite-city" *ngFor="let city of cities">
     <div class="city-name">{{ city.name }}</div>
     <div class="city-temp">{{ city.temperature }}°F</div>
-    <button (click)="removeFavorite(city)">Remove</button>
+    <button (click)="deleteCity(city)">Remove</button>
   </div>
 </div>
 

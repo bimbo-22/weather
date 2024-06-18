@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
     await this.getAllCities();
     if (this.cities && this.cities.length > 0) {
       this.getWeatherData(this.cities[0].name);
-      this.loadCities();
+      // this.loadCities();
       console.log('Cities loaded');
     }
 
@@ -166,8 +166,8 @@ export class AppComponent implements OnInit {
   }
 
   private loadFavoriteCities() {
-    this.favoriteCities = this.cities.filter((city) => city.favorite);
-    this.favoriteCities.forEach((city) => {
+    // this.favoriteCities = this.cities.filter((city) => city.favorite);
+    this.cities.forEach((city) => {
       this.weatherService.getWeatherData(city.name).subscribe({
         next: (data) => {
           city.temperature = data.main.temp;
@@ -179,7 +179,8 @@ export class AppComponent implements OnInit {
     });
   }
 
-  removeFavorite(city: City) {
+  // remove
+  deleteCity(city: City) {
     console.log('Remove button clicked for:', city);
 
     // Ensure the city object is correct
@@ -187,33 +188,15 @@ export class AppComponent implements OnInit {
       console.error('Expected a city object but received a string:', city);
       return;
     }
-
-    // Set city.favorite to false
-    city.favorite = false;
-    city.updated_at = new Date().toISOString();
+    //
+    // // Set city.favorite to false
+    // city.favorite = false;
+    // city.updated_at = new Date().toISOString();
 
     // Update favorite status in the backend
-    this.weatherService.updateFavorite(city).subscribe({
+    this.weatherService.deleteCity(city.id).subscribe({
       next: () => {
         console.log('Favorite city removed successfully');
-
-        // Delete city from the backend
-        this.weatherService.deleteCity(city.id).subscribe({
-          next: () => {
-            console.log('City deleted successfully');
-
-            // Reload favorite cities
-            this.loadFavoriteCities();
-
-            // Update isFavorite flag
-            this.isFavorite = this.checkIfFavorite(
-              this.weatherData?.name || ''
-            );
-          },
-          error: (err) => {
-            console.error('Error deleting city', err);
-          },
-        });
       },
       error: (err) => {
         console.error('Error removing favorite city', err);
@@ -223,7 +206,7 @@ export class AppComponent implements OnInit {
 
   testButtonClick(city: City) {
     console.log('Test button clicked for:', city);
-    this.removeFavorite(city);
+    this.deleteCity(city);
   }
 }
 

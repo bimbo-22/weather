@@ -53,6 +53,7 @@ export interface Sys {
 }
 
 export interface City {
+  temperature?: number;
   id: number;
   name: string;
   favorite: boolean;
