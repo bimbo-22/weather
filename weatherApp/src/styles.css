@@ -151,3 +151,54 @@ body {
   font-size: 0.8em;
   text-align: center;
 }
+
+.favorite-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.favorite {
+  color: red;
+}
+
+.favorites-container {
+  /* margin-top: -120px; */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Space between boxes */
+  margin-bottom: 20px;
+}
+
+.favorite-city {
+  background: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  width: 100px; /* Reduced width */
+  text-align: center;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  height: 95px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.favorite-city .city-name {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.favorite-city .city-temp {
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+.favorite-city button {
+  background: blue;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 12px; /* Reduced font size */
+}

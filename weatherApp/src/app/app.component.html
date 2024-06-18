@@ -11,8 +11,18 @@
 <div class="container">
   <div class="upper-data">
     <div class="weather-data">
-      <div class="location">{{ weatherData?.name }}</div>
-      <div class="temperature">{{ (weatherData?.main?.temp) }}°F</div>
+      <div class="location">
+        {{ weatherData?.name }}
+        <button class="favorite-button" (click)="toggleFavorite()">
+          <span
+            class="material-symbols-outlined"
+            [ngClass]="{ favorite: isFavorite }"
+          >
+            {{ isFavorite ? "favorite" : "favorite_border" }}</span
+          >
+        </button>
+      </div>
+      <div class="temperature">{{ weatherData?.main?.temp }}°F</div>
     </div>
   </div>
   <div class="lower-data">
@@ -23,40 +33,37 @@
           <span class="material-symbols-outlined"> thermometer_loss </span>
           <span class="icon-name">Min</span>
         </div>
-        <div class="info-block-value">
-          {{ weatherData?.main?.temp_min }}°F
-        </div>
+        <div class="info-block-value">{{ weatherData?.main?.temp_min }}°F</div>
       </div>
       <div class="info-block">
         <div class="info-block-label">
           <span class="material-symbols-outlined"> thermometer_gain </span>
           <span class="icon-name">Max</span>
         </div>
-        <div class="info-block-value">
-          {{ weatherData?.main?.temp_max }}°F
-        </div>
+        <div class="info-block-value">{{ weatherData?.main?.temp_max }}°F</div>
       </div>
       <div class="info-block">
         <div class="info-block-label">
           <span class="material-symbols-outlined"> air </span>
           <span class="icon-name">Wind</span>
         </div>
-        <div class="info-block-value">
-          {{ weatherData?.wind?.speed }} km/h
-        </div>
+        <div class="info-block-value">{{ weatherData?.wind?.speed }} km/h</div>
       </div>
       <div class="info-block">
         <div class="info-block-label">
-              <span class="material-symbols-outlined">
-                humidity_percentage
-              </span>
+          <span class="material-symbols-outlined"> humidity_percentage </span>
           <span class="icon-name">Humidity</span>
         </div>
-        <div class="info-block-value">
-          {{ weatherData?.main?.humidity }}%
-        </div>
+        <div class="info-block-value">{{ weatherData?.main?.humidity }}%</div>
       </div>
     </div>
+  </div>
+</div>
+<div class="favorites-container">
+  <div class="favorite-city" *ngFor="let city of favoriteCities">
+    <div class="city-name">{{ city.name }}</div>
+    <div class="city-temp">{{ city.temperature }}°F</div>
+    <button (click)="removeFavorite(city)">Remove</button>
   </div>
 </div>
 

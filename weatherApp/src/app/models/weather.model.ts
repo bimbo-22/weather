@@ -56,6 +56,6 @@ export interface City {
   id: number;
   name: string;
   favorite: boolean;
-  created_at: Date;
-  updated_at: Date;
+  created_at: String;
+  updated_at: String | null;
 }
