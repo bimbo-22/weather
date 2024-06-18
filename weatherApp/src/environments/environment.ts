@@ -4,6 +4,6 @@ export const environment = {
   XRapidAPIHostHeaderName: 'x-rapidapi-host',
   XRapidAPIHostHeaderValue: 'open-weather13.p.rapidapi.com',
   XRapidAPIKeyHeaderName: 'x-rapidapi-key',
-  XRapidAPIKeyHeaderValue: 'f4aa3a65f3mshf4ec6a6021b3b84p1e0a52jsn42cdcc0fbd84',
-  BackendApiBaseUrl: 'http://localhost:3001',
+  XRapidAPIKeyHeaderValue: '87484b8fefmsh426980a06ff0e5bp1ab24bjsn90ae91ce0b4d',
+  BackendApiBaseUrl: 'http://localhost:3000',
 };

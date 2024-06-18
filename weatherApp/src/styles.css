@@ -152,47 +152,57 @@ body {
   text-align: center;
 }
 
+/* General button styling */
 .favorite-button {
   background: none;
   border: none;
   cursor: pointer;
 }
+
+/* Heart icon colors */
 .favorite {
   color: red;
 }
 
-.favorites-container {
-  /* margin-top: -120px; */
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px; /* Space between boxes */
-  margin-bottom: 20px;
+.not-favorite {
+  color: grey;
 }
 
+/* Container for the favorite cities */
+.favorites-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Add some space between each city card */
+}
+
+/* Styling for each favorite city entry */
 .favorite-city {
   background: #f8f8f8;
   border: 1px solid #ddd;
   border-radius: 5px;
   padding: 10px;
-  width: 100px; /* Reduced width */
-  text-align: center;
+  width: 200px; /* Adjusted width for better display */
+  text-align: left;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  height: 95px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  position: relative;
 }
 
+/* City name styling */
 .favorite-city .city-name {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
+  margin-bottom: 5px;
 }
 
+/* City temperature styling */
 .favorite-city .city-temp {
-  font-size: 14px;
-  margin: 10px 0;
+  font-size: 16px;
+  margin-bottom: 10px;
 }
 
+/* General button styling within favorite city entry */
 .favorite-city button {
   background: blue;
   color: #fff;
@@ -200,5 +210,124 @@ body {
   padding: 5px 10px;
   cursor: pointer;
   border-radius: 3px;
-  font-size: 12px; /* Reduced font size */
+  font-size: 14px;
+  margin-top: 10px; /* Space between temperature and buttons */
+}
+
+/* Specific styling for the heart button */
+.favorite-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Styling for the heart icon */
+.favorite-btn .fa-heart {
+  font-size: 1.5em;
+}
+
+.favorite-btn .fa-heart.fas {
+  color: red; /* Color for favorites */
+}
+
+.favorite-btn .fa-heart.far {
+  color: grey; /* Default color for non-favorites */
+}
+
+/* General button spacing */
+button {
+  margin-left: 10px;
+}
+/* General button styling */
+.favorite-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Heart icon colors */
+.favorite {
+  color: red;
+}
+
+.not-favorite {
+  color: grey;
+}
+
+/* Container for the favorite cities */
+.favorites-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Add some space between each city card */
+}
+
+/* Styling for each favorite city entry */
+.favorite-city {
+  background: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  width: 150px; /* Adjusted width for better display */
+  text-align: left;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* City name styling */
+.favorite-city .city-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* City temperature styling */
+.favorite-city .city-temp {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+/* General button styling within favorite city entry */
+.favorite-city button {
+  /* background: blue; */
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 14px;
+  margin-top: 10px; /* Space between temperature and buttons */
+}
+
+/* Specific styling for the heart button */
+.favorite-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none; /* Remove background color */
+  border: none;
+  cursor: pointer;
+  padding: 0; /* Remove any padding */
+}
+
+/* Styling for the heart icon */
+.favorite-btn .fa-heart {
+  font-size: 1.5em;
+}
+
+.favorite-btn .fa-heart.fas {
+  color: red; /* Color for favorites */
+}
+
+.favorite-btn .fa-heart.far {
+  color: grey; /* Default color for non-favorites */
+}
+
+/* General button spacing */
+button {
+  margin-left: 10px;
 }

@@ -13,13 +13,8 @@
     <div class="weather-data">
       <div class="location">
         {{ weatherData?.name }}
-        <button class="favorite-button" (click)="toggleFavorite()">
-          <span
-            class="material-symbols-outlined"
-            [ngClass]="{ favorite: isFavorite }"
-          >
-            {{ isFavorite ? "favorite" : "favorite_border" }}</span
-          >
+        <button class="save-city-button" (click)="saveCity()">
+          <span class="material-symbols-outlined"> save </span>
         </button>
       </div>
       <div class="temperature">{{ weatherData?.main?.temp }}°F</div>
@@ -61,9 +56,14 @@
 </div>
 <div class="favorites-container">
   <div class="favorite-city" *ngFor="let city of cities">
-    <div class="city-name">{{ city.name }}</div>
-    <div class="city-temp">{{ city.temperature }}°F</div>
-    <button (click)="deleteCity(city)">Remove</button>
+    <div class="city-details">
+      <div class="city-name">{{ city.name }}</div>
+      <div class="city-temp">{{ city.temperature }}°F</div>
+    </div>
+    <button class="favorite-btn" (click)="toggleFavorite(city)">
+      <i [ngClass]="city.favorite ? 'fas fa-heart' : 'far fa-heart'"></i>
+    </button>
+    <button (click)="deleteCity(city)">Delete</button>
   </div>
 </div>
 

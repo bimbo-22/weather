@@ -35,7 +35,7 @@ export class WeatherService {
     );
   }
 
-  addCity(city: City): Observable<City> {
+  addCity(city: Partial<City>): Observable<City> {
     return this.http.post<City>(
       `${environment.BackendApiBaseUrl}/cities`,
       city
