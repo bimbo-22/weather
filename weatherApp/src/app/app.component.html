@@ -13,11 +13,14 @@
     <div class="weather-data">
       <div class="location">
         {{ weatherData?.name }}
+        <!-- get the name of the city from the weather model-->
         <button class="save-city-button" (click)="saveCity()">
+          <!-- call save city method -->
           <span class="material-symbols-outlined"> save </span>
         </button>
       </div>
       <div class="temperature">{{ weatherData?.main?.temp }}°F</div>
+      <!-- get the current temperature of the city from the weather model-->
     </div>
   </div>
   <div class="lower-data">
@@ -29,6 +32,7 @@
           <span class="icon-name">Min</span>
         </div>
         <div class="info-block-value">{{ weatherData?.main?.temp_min }}°F</div>
+        <!-- get the minimum temperature of the city from the weather model-->
       </div>
       <div class="info-block">
         <div class="info-block-label">
@@ -36,6 +40,7 @@
           <span class="icon-name">Max</span>
         </div>
         <div class="info-block-value">{{ weatherData?.main?.temp_max }}°F</div>
+        <!-- get the maximum temperature of the city from the weather model-->
       </div>
       <div class="info-block">
         <div class="info-block-label">
@@ -43,6 +48,7 @@
           <span class="icon-name">Wind</span>
         </div>
         <div class="info-block-value">{{ weatherData?.wind?.speed }} km/h</div>
+        <!-- get the speed of wind of the city from the weather model-->
       </div>
       <div class="info-block">
         <div class="info-block-label">
@@ -50,20 +56,26 @@
           <span class="icon-name">Humidity</span>
         </div>
         <div class="info-block-value">{{ weatherData?.main?.humidity }}%</div>
+        <!-- get the humidity of the city from the weather model-->
       </div>
     </div>
   </div>
 </div>
+<!-- favorites functionality -->
 <div class="favorites-container">
   <div class="favorite-city" *ngFor="let city of cities">
     <div class="city-details">
       <div class="city-name">{{ city.name }}</div>
+      <!-- get the name of the city from the weather model-->
       <div class="city-temp">{{ city.temperature }}°F</div>
+      <!-- get the temperature of the city from the weather model-->
     </div>
     <button class="favorite-btn" (click)="toggleFavorite(city)">
+      <!-- call the favorite method to add a city to favorites -->
       <i [ngClass]="city.favorite ? 'fas fa-heart' : 'far fa-heart'"></i>
     </button>
     <button (click)="deleteCity(city)">Delete</button>
+    <!--call the delete method to delete the city from the saved list-->
   </div>
 </div>
 

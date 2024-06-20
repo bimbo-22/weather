@@ -17,25 +17,28 @@ import { CommonModule } from '@angular/common';
   providers: [DecimalPipe],
 })
 export class AppComponent implements OnInit {
-  titleControl = new FormControl(null);
+  titleControl = new FormControl(null); // form control for the city name input
   title = 'WeatherApp';
   cityName: string = '';
-  weatherData?: WeatherData;
-  isFavorite: boolean = false;
-  cities: City[] = [];
+  weatherData?: WeatherData; // holds weather data for the cities
+  isFavorite: boolean = false; // track if the city is a favorite
+  cities: City[] = []; // arrays to store the list of cities
 
+  // dependency injection for the weather service and http client
   constructor(
     private weatherService: WeatherService,
     private http: HttpClient
   ) {}
 
+  // initializing all data-bound properties
   async ngOnInit(): Promise<void> {
-    await this.loadSavedCities();
+    await this.loadSavedCities(); // load saved cities from the backend
     if (this.cities && this.cities.length > 0) {
-      this.getWeatherData(this.cities[0].name);
+      this.getWeatherData(this.cities[0].name); // get weather data for the first city
     }
   }
 
+  // handles the form submission to get the weather data for the city
   onSubmit(): void {
     const city: any = this.titleControl.value;
     console.log('City Name:', city);
@@ -43,33 +46,40 @@ export class AppComponent implements OnInit {
     this.cityName = ''; // Clear cityName after logging
   }
 
+  // fetches the weather data for the city
   private getWeatherData(cityName: string) {
     this.weatherService.getWeatherData(cityName).subscribe({
       next: (response) => {
         console.log('Weather Data:', response);
         this.weatherData = response;
+        // check if the city is a favorite
         this.isFavorite =
           this.cities?.find((city) => city.name === cityName)?.favorite ??
           false;
       },
       error: (err) => {
+        // logging errors
         console.error('Error fetching weather data', err);
       },
     });
   }
 
+  // load saved cities from the backend service
   private loadSavedCities(): void {
     this.weatherService.getCities().subscribe({
       next: (cities: City[]) => {
+        // to sort cities: favorites first
         cities.sort((a, b) => (b.favorite ? 1 : 0) - (a.favorite ? 1 : 0));
         this.cities = cities;
       },
       error: (err) => {
+        // logging errors
         console.error('Error fetching cities', err);
       },
     });
   }
 
+  // saving the current city to the list of saved cities
   saveCity() {
     if (this.weatherData && this.weatherData.name) {
       const cityName = this.weatherData.name;
@@ -99,14 +109,16 @@ export class AppComponent implements OnInit {
     }
   }
 
+  // sets the favorite status of the city
   toggleFavorite(city: City) {
-    city.favorite = !city.favorite;
-    city.updated_at = new Date().toISOString();
+    city.favorite = !city.favorite; // Set the favorite status
+    city.updated_at = new Date().toISOString(); // Update the updated_at timestamp
     this.weatherService.updateFavorite(city).subscribe({
+      // Update the favorite status
       next: (updatedCity) => {
         const index = this.cities.findIndex((c) => c.id === updatedCity.id);
         if (index !== -1) {
-          this.cities[index] = updatedCity;
+          this.cities[index] = updatedCity; // Update the city in the list
         }
       },
       error: (err) => {
@@ -115,15 +127,18 @@ export class AppComponent implements OnInit {
     });
   }
 
+  // deleting the city from the list of saved cities
   deleteCity(city: City) {
     console.log('Remove button clicked for:', city);
 
     if (typeof city === 'string') {
+      // Check if the city is a string
       console.error('Expected a city object but received a string:', city);
       return;
     }
 
     this.weatherService.deleteCity(city.id).subscribe({
+      // Delete the city by id
       next: () => {
         console.log('City removed successfully');
         this.loadSavedCities(); // Refresh the list after deleting a city

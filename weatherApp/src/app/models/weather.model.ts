@@ -1,17 +1,18 @@
+// interfaces converted from JSON to typescript to use in fetching the data e.g. in the html file
 export interface WeatherData {
-  coord: Coord;
-  weather: Weather[];
-  base: string;
-  main: Main;
-  visibility: number;
-  wind: Wind;
-  clouds: Clouds;
-  dt: number;
-  sys: Sys;
-  timezone: number;
-  id: number;
-  name: string;
-  cod: number;
+  coord?: Coord;
+  weather?: Weather[];
+  base?: string;
+  main?: Main;
+  visibility?: number;
+  wind?: Wind;
+  clouds?: Clouds;
+  dt?: number;
+  sys?: Sys;
+  timezone?: number;
+  id?: number;
+  name?: string;
+  cod?: number;
 }
 
 export interface Coord {
