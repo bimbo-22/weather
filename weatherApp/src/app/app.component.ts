@@ -47,7 +47,7 @@ export class AppComponent implements OnInit {
   }
 
   // fetches the weather data for the city
-  private getWeatherData(cityName: string) {
+  public getWeatherData(cityName: string) {
     this.weatherService.getWeatherData(cityName).subscribe({
       next: (response) => {
         console.log('Weather Data:', response);
@@ -93,7 +93,7 @@ export class AppComponent implements OnInit {
           favorite: false,
           created_at: new Date().toISOString(),
           updated_at: null,
-          temperature: this.weatherData.main.temp, // Make sure temperature is added
+          temperature: this.weatherData.main?.temp, // Make sure temperature is added
         };
 
         this.weatherService.addCity(newCity).subscribe({
